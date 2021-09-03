@@ -1,0 +1,8 @@
+.no-link-underline {
+	text-decoration: none;
+	color: #121212;
+}
+
+.no-link-underline:hover {
+	color: #121212;
+}
