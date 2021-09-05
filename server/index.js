@@ -24,7 +24,7 @@ mongoose
 		useUnifiedTopology: true,
 	})
 	.then((result) => {
-		app.listen(process.env.PORT, () => {
+		app.listen(process.env.PORT || 5000, () => {
 			console.log(
 				`Server has started : http://localhost:${process.env.PORT}`
 			);
