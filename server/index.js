@@ -7,7 +7,7 @@ import cors from "cors";
 // Importing Routes
 import authRoute from "./routes/AuthRoutes.js";
 import postRoute from "./routes/PostRoutes.js";
-import verifyToken from "./routes/verifyToken.js";
+import verifyToken from "./routes/VerifyToken.js";
 
 // Setting up express and dotenv
 const app = express();
