@@ -10,3 +10,7 @@
 -   Modal when deleting a post
 -   Mobile Friendly
 -   Refactoring
+
+### Netlify Problems
+
+-   Not redirecting after editing the post

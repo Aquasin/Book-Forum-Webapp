@@ -1,5 +1,5 @@
 // Importing Modules
-import express from "express";
+import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -15,6 +15,7 @@ dotenv.config();
 
 // Setting up middleware
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(cors());
 
 // Connecting to the database
