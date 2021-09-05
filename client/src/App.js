@@ -6,6 +6,7 @@ import Main from "./pages/Main/Main";
 import Details from "./pages/Details/Details";
 import Create from "./pages/Create/Create";
 import UserMain from "./pages/UserMain/UserMain";
+import Edit from "./pages/Edit/Edit";
 
 const App = () => {
 	return (
@@ -22,6 +23,7 @@ const App = () => {
 					></Route>
 					<Route exact path="/create" component={Create}></Route>
 					<Route exact path="/:id" component={UserMain}></Route>
+					<Route exact path="/edit/:id" component={Edit}></Route>
 				</Switch>
 			</div>
 		</Router>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cookie from "js-cookie";
 import axios from "axios";
+import Toast from "../../components/Toast/Toast";
 import "./Login.css";
 
 const Login = () => {
@@ -23,7 +24,7 @@ const Login = () => {
 		axios
 			.post(uri, logUser)
 			.then((result) => {
-				console.log(result.data);
+				// console.log(result.data);
 				Cookie.set("token", result.data.token);
 				// <Link to="/"></Link>;
 				localStorage.setItem("Username", result.data.username);
@@ -32,6 +33,7 @@ const Login = () => {
 			.catch((err) => {
 				console.log("jhi");
 				console.log(err.response);
+				Toast("Email or Password Incorrect");
 			});
 	};
 
@@ -43,6 +45,7 @@ const Login = () => {
 		<div className="container-fluid">
 			<div className="row justify-content-center align-items-center row-login">
 				<div className="col-sm-5 p-5 rounded">
+					<div id="hidden"></div>
 					<div className="text-center">
 						<i className="fas fa-book-reader fa-4x text-primary"></i>
 					</div>
@@ -60,6 +63,7 @@ const Login = () => {
 								className="form-control border-success"
 								id="emailId"
 								name="email"
+								placeholder="Enter your Email"
 								value={user.email}
 								onChange={handleChange}
 								required
@@ -73,10 +77,11 @@ const Login = () => {
 								Password
 							</label>
 							<input
-								type="text"
+								type="password"
 								className="form-control border-primary"
 								id="password"
 								name="password"
+								placeholder="Enter your Password"
 								value={user.password}
 								onChange={handleChange}
 								required

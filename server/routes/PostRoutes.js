@@ -12,6 +12,8 @@ router.get("/username", postControllers.post_get_all_post_username);
 
 router.get("/:id", postControllers.post_get_one);
 
+router.put("/:id", postControllers.post_update_post);
+
 router.delete("/:id", postControllers.post_delete_one);
 
 export default router;

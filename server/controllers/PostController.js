@@ -33,6 +33,27 @@ const post_create_post = (req, res) => {
 		});
 };
 
+// Update a Post
+const post_update_post = (req, res) => {
+	const id = req.params.id;
+
+	const updatePost = {
+		title: req.body.title,
+		description: req.body.description,
+		body: req.body.body,
+	};
+
+	Post.findByIdAndUpdate(id, updatePost)
+		.then((result) => {
+			res.send({
+				title: "Post is Updated",
+				result: result,
+			});
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
 // Get all Post of a particular Username
 const post_get_all_post_username = (req, res) => {
 	console.log(req.token.username);
@@ -83,6 +104,7 @@ const post_delete_one = (req, res) => {
 export default {
 	post_get_all_post,
 	post_create_post,
+	post_update_post,
 	post_get_all_post_username,
 	post_get_one,
 	post_delete_one,

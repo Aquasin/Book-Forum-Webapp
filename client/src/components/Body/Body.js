@@ -31,6 +31,7 @@ const Body = () => {
 		<section>
 			{getCookie && (
 				<div className="container mt-5 px-5">
+					<div id="hidden"></div>
 					<div className="row p-2 m-2 fs-1">
 						<div className="col">Posts</div>
 						<div className="col text-end">
@@ -40,7 +41,7 @@ const Body = () => {
 							</Link>
 						</div>
 					</div>
-					<div className="border-top border-danger border-2 m-2">
+					<div className="border-top border-danger border-2 m-2 p-2">
 						{posts.map((post) => (
 							<div
 								key={post._id}
@@ -50,13 +51,15 @@ const Body = () => {
 									className="no-link-underline"
 									to={`/details/${post._id}`}
 								>
-									<div className="col-8">
+									<div className="col-12">
 										Title : {post.title}
 									</div>
-									<div className="col-8">
+									<div className="col-10 py-1">
 										Description : {post.description}
 									</div>
-									<div className="col-8">{post.body}</div>
+									<div className="col-10 py-1">
+										{post.body}
+									</div>
 									<div className="col-12 text-end fst-italic">
 										Post Written by {post.createdBy}
 									</div>

@@ -9,6 +9,11 @@ const router = express.Router();
 // Register
 router.post("/register", async (req, res) => {
 	// Checking if the user is already in the database
+	const usernameExist = await User.findOne({ username: req.body.username });
+	if (usernameExist) {
+		return res.status(400).send({ title: "Username already exist" });
+	}
+
 	const emailExist = await User.findOne({ email: req.body.email });
 	if (emailExist) {
 		return res.status(400).send({ title: "Email already exist" });

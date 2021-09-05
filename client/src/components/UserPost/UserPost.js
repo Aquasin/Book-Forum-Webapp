@@ -46,6 +46,10 @@ const UserPost = () => {
 			});
 	};
 
+	const editPost = (id) => {
+		window.location = `/edit/${id}`;
+	};
+
 	return (
 		<section>
 			{getCookie && (
@@ -59,7 +63,7 @@ const UserPost = () => {
 							</Link>
 						</div>
 					</div>
-					<div className="border-top border-danger border-2 m-2">
+					<div className="border-top border-danger border-2 m-2 p-2">
 						{posts.map((post) => (
 							<div
 								key={post._id}
@@ -74,7 +78,17 @@ const UserPost = () => {
 									</Link>
 									<div>
 										<button
+											className="btn btn-primary btn-sm me-2"
+											title="Edit Post"
+											onClick={() => {
+												editPost(post._id);
+											}}
+										>
+											<i class="fas fa-edit"></i>
+										</button>
+										<button
 											className="btn btn-danger btn-sm"
+											title="Delete Post"
 											onClick={() => deletePost(post._id)}
 										>
 											<i className="fas fa-trash-alt"></i>

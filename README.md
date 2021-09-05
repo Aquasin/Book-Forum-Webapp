@@ -5,6 +5,8 @@
 ### Frontend
 
 -   Details Post (make better)
--   Toast if Error in Login, Register, Creating a new Post
+-   Edit Post
+-   Toast if Error in Creating a new Post
+-   Modal when deleting a post
 -   Mobile Friendly
 -   Refactoring

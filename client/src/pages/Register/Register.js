@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Register.css";
+import Toast from "../../components/Toast/Toast";
 
 const Register = () => {
 	const [user, setUser] = useState({ username: "", email: "", password: "" });
@@ -29,6 +30,10 @@ const Register = () => {
 			})
 			.catch((err) => {
 				console.log(err.response.data);
+				const error = err.response.data.title;
+				if (error === "Username already exist")
+					Toast("Username already Exists");
+				else Toast("Email already Exists");
 			});
 	};
 
@@ -40,6 +45,7 @@ const Register = () => {
 		<div className="container-fluid">
 			<div className="row justify-content-center align-items-center row-register">
 				<div className="col-sm-5 p-5 rounded">
+					<div id="hidden"></div>
 					<div className="text-center">
 						<i className="fas fa-book-reader fa-4x text-primary"></i>
 					</div>
@@ -57,6 +63,9 @@ const Register = () => {
 								className="form-control border-success"
 								id="username"
 								name="username"
+								pattern=".{6,}"
+								title="6 or more characters"
+								placeholder="Enter your Username"
 								value={user.username}
 								onChange={handleChange}
 								required
@@ -74,6 +83,9 @@ const Register = () => {
 								className="form-control border-success"
 								id="emailId"
 								name="email"
+								pattern=".{6,}"
+								title="6 or more characters"
+								placeholder="Enter your Email"
 								value={user.email}
 								onChange={handleChange}
 								required
@@ -87,10 +99,13 @@ const Register = () => {
 								Password
 							</label>
 							<input
-								type="text"
+								type="password"
 								className="form-control border-primary"
 								id="password"
 								name="password"
+								pattern=".{6,}"
+								title="6 or more characters"
+								placeholder="Enter your Password"
 								value={user.password}
 								onChange={handleChange}
 								required
