@@ -5,12 +5,9 @@
 ### Frontend
 
 -   Details Post (make better)
--   Edit Post
+-   Edit Post (Only User can Edit)
 -   Toast if Error in Creating a new Post
 -   Modal when deleting a post
 -   Mobile Friendly
 -   Refactoring
-
-### Netlify Problems
-
--   Not redirecting after editing the post
+-   Give BG color to posts.
