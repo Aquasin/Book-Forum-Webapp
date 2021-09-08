@@ -16,7 +16,6 @@ const Login = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let uri = process.env.REACT_APP_BASE_URL_SERVER + "/user/login";
-		// var uri = "http://localhost:5000/api/v1/user/login";
 		const logUser = {
 			email: user.email,
 			password: user.password,
@@ -24,14 +23,15 @@ const Login = () => {
 		axios
 			.post(uri, logUser)
 			.then((result) => {
-				// console.log(result.data);
-				Cookie.set("token", result.data.token);
-				// <Link to="/"></Link>;
+				const in1Hour = 1 / 24;
+				Cookie.set("token", result.data.token, {
+					expires: in1Hour,
+					secure: true,
+				});
 				localStorage.setItem("Username", result.data.username);
 				window.location.replace("/");
 			})
 			.catch((err) => {
-				console.log("jhi");
 				console.log(err.response);
 				Toast("Email or Password Incorrect");
 			});
@@ -58,16 +58,18 @@ const Login = () => {
 							>
 								Email Address
 							</label>
-							<input
-								type="email"
-								className="form-control border-success"
-								id="emailId"
-								name="email"
-								placeholder="Enter your Email"
-								value={user.email}
-								onChange={handleChange}
-								required
-							/>
+							<div>
+								<input
+									type="email"
+									className="form-control border-success"
+									id="emailId"
+									name="email"
+									placeholder="Enter your Email"
+									value={user.email}
+									onChange={handleChange}
+									required
+								/>
+							</div>
 						</div>
 						<div className="mb-3">
 							<label

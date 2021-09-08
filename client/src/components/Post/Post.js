@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useLocation } from "react-router";
 
 const Post = () => {
+	const { state } = useLocation();
+
 	useEffect(() => {
 		getDetailOne();
+		// eslint-disable-next-line
 	}, []);
 
 	const [singlePost, setSinglePost] = useState({
@@ -15,9 +19,7 @@ const Post = () => {
 
 	const getDetailOne = () => {
 		let uri =
-			process.env.REACT_APP_BASE_URL_SERVER +
-			`/post/${window.location.href.split("/")[4]}`;
-		// var uri = "http://localhost:5000/api/v1/user/login";
+			process.env.REACT_APP_BASE_URL_SERVER + `/post/${state.singleLink}`;
 		axios
 			.get(uri, {
 				headers: {
@@ -25,7 +27,6 @@ const Post = () => {
 				},
 			})
 			.then((result) => {
-				console.log(result.data.result);
 				const postDetails = result.data.result;
 				setSinglePost({
 					title: postDetails.title,
@@ -38,8 +39,6 @@ const Post = () => {
 			});
 	};
 
-	console.log(singlePost);
-
 	return (
 		<div>
 			<div className="container mt-5">
@@ -50,7 +49,7 @@ const Post = () => {
 				<div className="row mt-3 fs-4">
 					Description : {singlePost.description}
 				</div>
-				<div className="row mt-4 fs-5">Body : {singlePost.body}</div>
+				<div className="row mt-4 fs-5">{singlePost.body}</div>
 			</div>
 		</div>
 	);

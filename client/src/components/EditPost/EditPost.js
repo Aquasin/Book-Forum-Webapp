@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useLocation } from "react-router";
 
 const EditPost = () => {
 	const [post, setPost] = useState({ title: "", description: "", body: "" });
+	const { state } = useLocation();
 
 	useEffect(() => {
 		getDetailOne();
+		// eslint-disable-next-line
 	}, []);
 
 	const getDetailOne = () => {
 		let uri =
 			process.env.REACT_APP_BASE_URL_SERVER +
-			`/post/${window.location.href.split("/")[4]}`;
-		console.log(uri);
-		// var uri = "http://localhost:5000/api/v1/user/login";
+			`/post/${state.linkEditPost}`;
 		axios
 			.get(uri, {
 				headers: {
@@ -22,7 +23,6 @@ const EditPost = () => {
 				},
 			})
 			.then((result) => {
-				console.log(result.data.result);
 				const postDetails = result.data.result;
 				setPost({
 					title: postDetails.title,
@@ -45,14 +45,12 @@ const EditPost = () => {
 		e.preventDefault();
 		let uri =
 			process.env.REACT_APP_BASE_URL_SERVER +
-			`/post/${window.location.href.split("/")[4]}`;
-		// var uri = "http://localhost:5000/api/v1/user/login";
+			`/post/${state.linkEditPost}`;
 		const createdPost = {
 			title: post.title,
 			description: post.description,
 			body: post.body,
 		};
-		console.log(createdPost);
 		axios
 			.put(uri, createdPost, {
 				headers: {
@@ -60,11 +58,9 @@ const EditPost = () => {
 				},
 			})
 			.then((result) => {
-				console.log(result.data);
 				window.location.replace(`/${localStorage.getItem("Username")}`);
 			})
 			.catch((err) => {
-				console.log("jhi");
 				console.log(err.response);
 			});
 	};

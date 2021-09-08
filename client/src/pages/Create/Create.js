@@ -15,13 +15,11 @@ const Create = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let uri = process.env.REACT_APP_BASE_URL_SERVER + "/post";
-		// var uri = "http://localhost:5000/api/v1/user/login";
 		const createdPost = {
 			title: post.title,
 			description: post.description,
 			body: post.body,
 		};
-		console.log(createdPost);
 		axios
 			.post(uri, createdPost, {
 				headers: {
@@ -29,11 +27,9 @@ const Create = () => {
 				},
 			})
 			.then((result) => {
-				console.log(result.data);
 				window.location.replace("/");
 			})
 			.catch((err) => {
-				console.log("jhi");
 				console.log(err.response);
 			});
 	};

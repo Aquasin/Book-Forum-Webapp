@@ -15,8 +15,6 @@ const Register = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let uri = process.env.REACT_APP_BASE_URL_SERVER + "/user/register";
-		// var uri = "http://localhost:5000/api/v1/user/login";
-		console.log(uri);
 		const logUser = {
 			username: user.username,
 			email: user.email,

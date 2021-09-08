@@ -19,7 +19,6 @@ const Body = () => {
 				},
 			})
 			.then((result) => {
-				console.log(result.data);
 				setPosts(result.data.result);
 			})
 			.catch((err) => {
@@ -43,28 +42,35 @@ const Body = () => {
 					</div>
 					<div className="border-top border-danger border-2 m-2 p-2">
 						{posts.map((post) => (
-							<div
-								key={post._id}
-								className="row flex p-2 m-3 border-start border-5 border-primary"
-							>
-								<Link
-									className="no-link-underline"
-									to={`/details/${post._id}`}
-								>
-									<div className="col-12">
-										Title : {post.title}
-									</div>
-									<div className="col-10 py-1">
-										Description : {post.description}
-									</div>
-									<div className="col-10 py-1">
-										{post.body}
-									</div>
-									<div className="col-12 text-end fst-italic">
-										Post Written by {post.createdBy}
-									</div>
-								</Link>
-							</div>
+							<React.Fragment key={post._id}>
+								<div className="row flex p-2 m-3 border-start border-5 border-primary">
+									<Link
+										className="no-link-underline"
+										to={{
+											pathname: `/details/${post._id}`,
+											state: {
+												singleLink: `${post._id}`,
+											},
+										}}
+									>
+										<div className="col-12">
+											Title : {post.title}
+										</div>
+										<div className="col-10 py-1">
+											Description : {post.description}
+										</div>
+										<div className="col-10 py-1">
+											{post.body}
+										</div>
+										<div className="col-12 text-end fst-italic">
+											Post Written by {post.createdBy}
+										</div>
+									</Link>
+								</div>
+								<div className="row justify-content-center">
+									<div className="col-6 border-top border-2 border-dark"></div>
+								</div>
+							</React.Fragment>
 						))}
 					</div>
 				</div>
