@@ -53,13 +53,15 @@ const UserPost = () => {
 	return (
 		<section>
 			{getCookie && (
-				<div className="container mt-5 px-5">
+				<div className="container mt-5 px-1">
 					<div className="row p-2 m-2 fs-1">
 						<div className="col">My Posts</div>
 						<div className="col text-end">
 							<Link to="/create" className="no-link-underline">
 								<i className="fas fa-plus-circle me-2"></i>
-								New Post
+								<span className="d-none d-sm-inline">
+									New Post
+								</span>
 							</Link>
 						</div>
 					</div>
@@ -117,17 +119,20 @@ const UserPost = () => {
 						{/* Posts */}
 						{posts.map((post) => (
 							<React.Fragment key={post._id}>
-								<div className="row flex p-2 m-3 border-start border-5 border-primary">
+								<div className="row flex p-1 m-3 border-start border-5 border-primary">
 									<div className="col-12 d-flex flex-row justify-content-between">
 										<Link
 											className="no-link-underline "
 											to={{
 												pathname: `/details/${post._id}`,
+												state: {
+													singleLink: `${post._id}`,
+												},
 											}}
 										>
 											Title : {post.title}
 										</Link>
-										<div>
+										<div className="d-flex">
 											<Link
 												className="btn btn-primary btn-sm me-2"
 												title="Edit Post"
@@ -153,10 +158,10 @@ const UserPost = () => {
 											</button>
 										</div>
 									</div>
-									<div className="col-10 py-1">
+									<div className="col-12 py-1">
 										Description : {post.description}
 									</div>
-									<div className="col-10 py-1">
+									<div className="col-12 py-1 postDesc">
 										{post.body}
 									</div>
 									<div className="col-12 text-end fst-italic">

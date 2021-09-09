@@ -29,14 +29,16 @@ const Body = () => {
 	return (
 		<section>
 			{getCookie && (
-				<div className="container mt-5 px-5">
+				<div className="container mt-5">
 					<div id="hidden"></div>
 					<div className="row p-2 m-2 fs-1">
 						<div className="col">Posts</div>
 						<div className="col text-end">
 							<Link to="/create" className="no-link-underline">
 								<i className="fas fa-plus-circle me-2"></i>
-								New Post
+								<span className="d-none d-sm-inline">
+									New Post
+								</span>
 							</Link>
 						</div>
 					</div>
@@ -56,10 +58,10 @@ const Body = () => {
 										<div className="col-12">
 											Title : {post.title}
 										</div>
-										<div className="col-10 py-1">
+										<div className="col-12 py-1">
 											Description : {post.description}
 										</div>
-										<div className="col-10 py-1">
+										<div className="col-12 py-1 postDesc">
 											{post.body}
 										</div>
 										<div className="col-12 text-end fst-italic">

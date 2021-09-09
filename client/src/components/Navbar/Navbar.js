@@ -27,7 +27,9 @@ const Navbar = () => {
 								<i className="fas fa-book-reader fa-2x text-primary"></i>
 							</Link>
 						</div>
-						<div className="col text-primary fs-3">BookForum</div>
+						<div className="col text-primary fs-3 d-none d-sm-block">
+							BookForum
+						</div>
 					</div>
 					<ul className="navbar-nav">
 						<li className="nav-item dropdown me-5">

@@ -6,3 +6,12 @@
 .no-link-underline:hover {
 	color: #121212;
 }
+
+.postDesc {
+	/* To make it look that more text is there */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
